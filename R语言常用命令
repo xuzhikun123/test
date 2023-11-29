@@ -1,0 +1,64 @@
+  #1.查看帮助
+help(mean)
+# 或者
+?mean
+   #2.包的安装与加载
+# 获取包含R包的库位置
+.libPaths()
+# 查看已经安装的包
+library()
+# 安装包
+install.packages("packagename")
+# 加载包
+library(packagesname)
+# 查看已经加载的包
+(.packages())
+# 卸载加载的包（注意不是删除包）
+detach("package:packagename")
+# 删除包
+remove.packages("packagename")
+   #3.数据的读取与保存
+# 读取csv
+data <- read.csv('.\\统计学\\example\\ch1\\table1_1.csv') 
+head(data,6)    # 读取前 6行的数据
+# 读取 Excel数据
+library(xlsx)    #需要安装 xlsx 包
+data <- read.xlsx("file",n)    # n 为要导入工作表的序号
+# 读取 spss数据
+library(foregin) # 已经默认安装
+data <- read.spss("file",use.value.labels=TRUE,as.data.frame=TRUE)
+# 读取 R格式数据
+data <- load('.\\统计学\\example\\ch1\\example1_1.RData')
+   #4.保存
+# 保存 R格式数据
+save(data,file = '.\\...\\name.Rdata')
+# 保存 csv格式数据
+write.csv(data,file = '.\\...\\name.csv')
+# 保存 xlsx格式
+library(xlsx)
+write.xlsx(data, "data.xlsx",sheet.name="sheet1")
+   #5.if条件语句
+#if语句x <- 30L  # R语言中，在正整数后加 L来表示整型数据（正整数）
+if(is.integer(x)) {
+  print("X is an Integer")
+}
+[1] "X is an Integer"
+#if...else语句
+y <- list('a', 'v', 'd')
+if('a' %in% y){    # %in% 运算符 检查元素是否在向量中
+  print('a is in list')
+}else{      # 注意这里的 else语句并不在if的花括号当中
+  print('a is not in list')
+  
+}
+[1] "a is in list"
+x <- c("what","is","truth")
+
+if("Truth" %in% x) {
+  print("Truth is found the first time")
+} else if ("truth" %in% x) {
+  print("truth is found the second time")
+} else {
+  print("No truth found")
+}
+[1] "truth is found the second time"
